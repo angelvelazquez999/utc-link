@@ -33,7 +33,7 @@ export default function Navbar() {
               <Button
                 size="sm"
                 onClick={() => setLoginOpen(true)}
-                className="flex items-center gap-2 bg-white hover:bg-gray-100 text-black transition-all"
+                className="flex items-center gap-2 bg-[#064f38] hover:bg-[#033022] text-white transition-all"
               >
                 <FiLogIn className="w-4 h-4" />
                 Iniciar Sesión
@@ -41,7 +41,7 @@ export default function Navbar() {
               <Button
                 size="sm"
                 onClick={() => setRegisterOpen(true)}
-                className="flex items-center gap-2 bg-white hover:bg-gray-100 text-black transition-all"
+                className="flex items-center gap-2 bg-[#064f38] hover:bg-[#033022] text-white transition-all"
               >
                 <FiUserPlus className="w-4 h-4" />
                 Registrarse

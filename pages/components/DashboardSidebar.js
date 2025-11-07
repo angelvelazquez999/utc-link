@@ -53,6 +53,43 @@ const menuItems = [
 export default function DashboardSidebar({ currentPath }) {
   const router = useRouter();
   const [activeItem, setActiveItem] = useState('Principal');
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Obtener datos del usuario
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem('access_token');
+        if (!token) {
+          router.push('/');
+          return;
+        }
+
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+        const response = await fetch(`${apiUrl}/usuarios/me`, {
+          method: 'GET',
+          headers: {
+            'accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Error al obtener datos del usuario');
+        }
+
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        console.error('Error al cargar usuario:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, [router]);
 
   // Determinar el item activo basado en la ruta actual
   useEffect(() => {
@@ -84,8 +121,29 @@ export default function DashboardSidebar({ currentPath }) {
             <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-white shadow-sm"></div>
           </div>
           <div className="flex-1 group-data-[collapsible=icon]:hidden">
-            <p className="text-sm font-semibold text-white drop-shadow-sm">Usuario</p>
-            <p className="text-xs text-white/90">Estudiante UTC</p>
+            {loading ? (
+              <>
+                <p className="text-sm font-semibold text-white drop-shadow-sm">Cargando...</p>
+                <p className="text-xs text-white/90">Estudiante UTC</p>
+              </>
+            ) : userData ? (
+              <>
+                <p className="text-sm font-semibold text-white drop-shadow-sm">
+                  {userData.nombre} {userData.apellidos}
+                </p>
+                <p className="text-xs text-white/90 mt-1">
+                  {userData.carrera}
+                </p>
+                <p className="text-xs text-white/90 mt-1">
+                  {userData.cuatrimestre}° Cuatrimestre
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-sm font-semibold text-white drop-shadow-sm">Usuario</p>
+                <p className="text-xs text-white/90">Estudiante UTC</p>
+              </>
+            )}
           </div>
         </div>
       </SidebarHeader>

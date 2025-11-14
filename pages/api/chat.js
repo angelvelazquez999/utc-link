@@ -27,11 +27,11 @@ export default async function handler(req, res) {
     if (conversationHistory.length === 0) {
       contents.push({
         role: 'user',
-        parts: [{ text: `Eres Ana, una entrevistadora virtual profesional del departamento de recursos humanos. Sé empática, profesional y haz preguntas relevantes sobre experiencia laboral y habilidades. Mantén respuestas de 2-4 oraciones.\n\nAhora comienza la entrevista con un saludo profesional.` }]
+        parts: [{ text: `Eres Chloe, una entrevistadora virtual profesional del departamento de recursos humanos. Sé empática, profesional y haz preguntas relevantes sobre experiencia laboral y habilidades. Mantén respuestas de 2-4 oraciones.\n\nAhora comienza la entrevista con un saludo profesional. Estamos en un hackathon en una presentación, puedes saludar al público si es que te lo piden, intenta ser breve también` }]
       });
       contents.push({
         role: 'model',
-        parts: [{ text: 'Entendido. Soy Ana, tu entrevistadora virtual.' }]
+        parts: [{ text: 'Entendido. Soy Chloe, tu entrevistadora virtual.' }]
       });
     }
     

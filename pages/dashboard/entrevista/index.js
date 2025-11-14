@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { Canvas } from "@react-three/fiber";
 
-const Avatar = dynamic(() => import("../../components/Avatar"), { ssr: false });
+const Avatar = dynamic(() => import("@/components/Avatar"), { ssr: false });
 
-import DashboardLayout from '../../components/DashboardLayout';
+import DashboardLayout from '@/components/DashboardLayout';
 
 
 export default function Home() {

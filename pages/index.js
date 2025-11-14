@@ -1,10 +1,10 @@
 'use client';
 import { useEffect } from 'react';
 import Lenis from 'lenis'
-import Navbar from './components/Navbar';
-import Intro from './components/Intro';
-import Description from './components/Description';
-import Section from './components/Section';
+import Navbar from '@/components/Navbar';
+import Intro from '@/components/Intro';
+import Description from '@/components/Description';
+import Section from '@/components/Section';
 export default function Home() {
 
   useEffect( () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
-import Background from '../../public/images/2.jpg';
-import Logo from '../../public/images/logo_mini.png';
+import Background from '../public/images/2.jpg';
+import Logo from '../public/images/logo_mini.png';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useRef } from 'react';
 

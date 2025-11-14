@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import DashboardLayout from '../../components/DashboardLayout';
+import DashboardLayout from '@/components/DashboardLayout';
 import { Button } from "@/components/ui/button";
 import { Loader2, MapPin, Building2, Calendar, ExternalLink, Briefcase, Search, Sparkles, Target } from "lucide-react";
 import { Input } from "@/components/ui/input";
